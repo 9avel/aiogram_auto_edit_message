@@ -26,16 +26,16 @@ async def random_num(bo_t: Bot):
     """
     edit message chance number 0 to 10
     """
-    with open('data.txt') as file:
-        for line in file.readlines():
-            line = line.strip().split(',')
-            # try and except use for if text=new text, throwing an exception
-            try:
+    try:
+        with open('data.txt') as file:
+            for line in file.readlines():
+                line = line.strip().split(',')
+                # try and except use for if text=new text, throwing an exception
                 await bo_t.edit_message_text(text=f'Hi User! Your number {random.randint(0, 10)}',
                                              chat_id=line[0],
                                              message_id=line[-1])
-            except:
-                pass
+    except:
+        pass
 
 
 async def task_random_num(sec):
